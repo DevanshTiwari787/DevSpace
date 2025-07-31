@@ -11,4 +11,4 @@ let post = new Schema({
 })
 
 let postModel = mongoose.model('posts' , post);
-module.exports = postModel
+module.exports = postModel  

@@ -3,8 +3,8 @@ let app = express()
 let router = express.Router();
 let bcrypt = require('bcrypt')
 let userModel = require("../models/user");
-const { de } = require('zod/v4/locales');
-let jwt = require('jsonwebtoken')
+let jwt = require('jsonwebtoken');
+const authenticate = require('../middlewares/authMiddleware');
 app.use(express.json())
 
 //get all users
@@ -98,6 +98,16 @@ router.post("/login" , async (req,res)=>{
         })
     }
 })
+
+
+router.get("/test", authenticate, (req,res)=>{
+    console.log("this will only run after i pass the token in headers")
+    res.json({
+        message : "authentication endpoint worked",
+        userId : req.userId
+    })
+})
+
 
 
 module.exports = router

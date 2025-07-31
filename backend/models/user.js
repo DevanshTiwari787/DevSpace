@@ -11,7 +11,7 @@ let user = new Schema({
     year : {type: String, required: true , enum : ['FE', 'SE', 'TE', 'BE']},
     linkedIn : {type: String},
     leetcode : {type: String},
-    posts : [{type : ObjectId , ref : posts}],
+    posts : [{type : ObjectId , ref : 'posts'}],
 })
 
 let userModel = mongoose.model('users' , user);
